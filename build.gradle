@@ -11,7 +11,10 @@
 apply plugin: 'java'
 
 test {
-    testLogging.showStandardStreams = true
+    testLogging {
+        showStandardStreams = true
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
 
 // In this section you declare where to find the dependencies of your project
@@ -23,10 +26,6 @@ repositories {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    // The production code uses the SLF4J logging API at compile time
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.1'
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.1'
-//    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.1'
     compile 'org.slf4j:slf4j-api:1.7.12'
     compile 'org.jsoup:jsoup:1.8.2'
     compile 'org.apache.commons:commons-lang3:3.4'

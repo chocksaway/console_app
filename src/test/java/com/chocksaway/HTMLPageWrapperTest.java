@@ -157,9 +157,9 @@ public class HTMLPageWrapperTest {
 
         String json = Utils.toJson(items, total);
 
-        System.out.println("---------- Welcome to the JSon Console:--------");
-        System.out.println(json);
-        System.out.println("---------- End of Console Output --------");
+        logger.info("---------- Welcome to the JSon Console:--------");
+        logger.info(json);
+        logger.info("---------- End of Console Output --------");
 
         assertNotNull(json);
 
