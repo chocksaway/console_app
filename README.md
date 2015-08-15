@@ -1,1 +1,1 @@
-# console_app
+# SConsole
