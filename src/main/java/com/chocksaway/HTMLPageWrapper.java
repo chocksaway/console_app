@@ -4,6 +4,8 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -81,8 +83,8 @@ public class HTMLPageWrapper extends HTMLPage {
      * @param elements - Elements are searched
      * @return List of String values
      */
-    protected List<String> getUnitPrices(Elements elements) {
-        List<String> unitPrices = new ArrayList<String>();
+    protected List<BigDecimal> getUnitPrices(Elements elements) {
+        List<BigDecimal> unitPrices = new ArrayList<BigDecimal>();
         for (org.jsoup.nodes.Element each : elements) {
             String unitPriceAsString = Utils.removeHTML(each.childNodes().get(0).toString());
             unitPrices.add(Utils.parseCurrency(unitPriceAsString));

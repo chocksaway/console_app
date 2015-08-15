@@ -1,25 +1,16 @@
 package com.chocksaway;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import org.jsoup.Connection;
-import org.jsoup.nodes.Document;
-import org.jsoup.Jsoup;
-
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by milesd on 14/08/15.
@@ -85,12 +76,14 @@ public class HTMLPageWrapperTest {
     public void getMainPageUnitPrices() {
         Elements elements = wrapper.findUnitPriceInDocument();
         assertTrue(elements.size() > 0);
-        List<String> unitPrices = wrapper.getUnitPrices(elements);
-        assertTrue(unitPrices.stream().filter(item -> Double.parseDouble(item) > 0)
+        List<BigDecimal> unitPrices = wrapper.getUnitPrices(elements);
+        assertTrue(unitPrices.stream().filter(item -> item.signum() > 0)
                         .collect(
                                 Collectors.toList()).size() > 0
         );
     }
+
+
 
 
     /**
@@ -130,7 +123,7 @@ public class HTMLPageWrapperTest {
     public void buildStocksItems() {
         Elements elements = wrapper.findUnitPriceInDocument();
         assertTrue(elements.size() > 0);
-        List<String> unitPrices = wrapper.getUnitPrices(elements);
+        List<BigDecimal> unitPrices = wrapper.getUnitPrices(elements);
         assertTrue(unitPrices.size() == 12);
 
         List<Element> ele = wrapper.getPageElements(wrapper.getH3());
@@ -146,15 +139,17 @@ public class HTMLPageWrapperTest {
         assertTrue(weights.size() == 12);
 
         List<StockItem> items = new ArrayList<StockItem>();
+        BigDecimal total = BigDecimal.ZERO;
         for (int counter = 0; counter < 12; counter++) {
             StockItem item = new StockItem(titles.get(counter),
                     weights.get(counter),
                     unitPrices.get(counter),
                     descriptions.get(counter));
             items.add(item);
+            total = total.add(unitPrices.get(counter));
         }
 
-        String json = Utils.toJson(items);
+        String json = Utils.toJson(items, total);
 
         assertNotNull(json);
 

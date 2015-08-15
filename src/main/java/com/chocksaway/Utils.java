@@ -6,11 +6,8 @@ import org.jsoup.Jsoup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.ParseException;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Created by milesd on 14/08/15.
@@ -37,26 +34,14 @@ public class Utils {
      * @param curr - Parse unit cost currency
      * @return - currency two decimal places
      */
-    protected static String parseCurrency(String curr) {
-        DecimalFormat numberFormat = new DecimalFormat("¤#.00", new DecimalFormatSymbols(Locale.UK));
-        Number num;
-        String twoDecPlaces = null;
-        try {
-            num = numberFormat.parse(curr);
-
-            DecimalFormat df = new DecimalFormat("#.00");
-
-            twoDecPlaces = df.format(num);
-        } catch (ParseException e) {
-            logger.info(e.getMessage());
-        }
-
-        return twoDecPlaces;
+    protected static BigDecimal parseCurrency(String curr) {
+        String val = curr.replace("£","");
+        return new BigDecimal(val);
     }
 
 
-    protected static String toJson(List<StockItem> items) {
-        DataObject obj = new DataObject(items);
+    protected static String toJson(List<StockItem> items, BigDecimal total) {
+        DataObject obj = new DataObject(items, total);
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -72,16 +57,18 @@ public class Utils {
 
 class DataObject {
     List <StockItem> results;
+    BigDecimal total;
 
-    public DataObject(List <StockItem> stockItems) {
-        results = stockItems;
+    public DataObject(List <StockItem> stockItems, BigDecimal total) {
+        this.results = stockItems;
+        this.total = total;
     }
 
     //getter and setter methods
 
     @Override
     public String toString() {
-        return "DataObject [list="+ results + "]";
+        return "DataObject [list="+ results + "]," + total;
     }
 
 }
