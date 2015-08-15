@@ -20,5 +20,6 @@
     </orderEntry>
     <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.8.2" level="project" />
     <orderEntry type="module" module-name="main" scope="TEST" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.7" level="project" />
   </component>
 </module>

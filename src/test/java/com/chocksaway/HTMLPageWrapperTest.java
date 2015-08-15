@@ -4,6 +4,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,9 @@ public class HTMLPageWrapperTest {
 
     private static final String AVOCADO = "Avocado";
     private HTMLPageWrapper wrapper;
+
+    Logger logger = LoggerFactory.getLogger(HTMLPage.class);
+
 
     /*
         http://www.sainsburys.co.uk/webapp/wcs/stores/servlet/CategoryDisplay?
@@ -110,7 +116,7 @@ public class HTMLPageWrapperTest {
         List<Element> elements = wrapper.getPageElements(wrapper.getH3());
         assertTrue(elements.size() > 0);
         elements = wrapper.cleanH3Elements(elements);
-        List<Integer> weights = wrapper.getPageWeights(elements);
+        List<String> weights = wrapper.getPageWeights(elements);
         assertTrue(weights.size() == 12);
     }
 
@@ -135,7 +141,7 @@ public class HTMLPageWrapperTest {
 
         List<String> descriptions = wrapper.getDescriptionsInChildPages(ele);
         assertTrue(descriptions.size() == 12);
-        List<Integer> weights = wrapper.getPageWeights(ele);
+        List<String> weights = wrapper.getPageWeights(ele);
         assertTrue(weights.size() == 12);
 
         List<StockItem> items = new ArrayList<StockItem>();
@@ -151,7 +157,13 @@ public class HTMLPageWrapperTest {
 
         String json = Utils.toJson(items, total);
 
+        System.out.println("---------- Welcome to the JSon Console:--------");
+        System.out.println(json);
+        System.out.println("---------- End of Console Output --------");
+
         assertNotNull(json);
+
+
 
 
     }

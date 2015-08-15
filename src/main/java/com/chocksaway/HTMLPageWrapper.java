@@ -4,7 +4,6 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.select.Elements;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -111,11 +110,15 @@ public class HTMLPageWrapper extends HTMLPage {
      * @param elements - Search in Elements
      * @return - Page sizes
      */
-    protected List<Integer> getPageWeights(List<Element> elements) {
-        List<Integer> weights = elements.stream().map(each ->
-                getPageWeight(
-                        each.childNodes().get(1).attr("href")))
-                .collect(Collectors.toList());
+    protected List<String> getPageWeights(List<Element> elements) {
+        List<String> weights = new ArrayList<String>();
+        for (Element each : elements) {
+            weights.add(String.valueOf(
+                    (getPageWeight(each.childNodes().get(1).attr("href")))/1000) + "kb"
+
+            );
+        }
+
         return weights;
     }
 }

@@ -43,7 +43,10 @@ public class Utils {
     protected static String toJson(List<StockItem> items, BigDecimal total) {
         DataObject obj = new DataObject(items, total);
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .disableHtmlEscaping()
+                .create();
 
         // convert java object to JSON format,
         // and returned as JSON formatted string
