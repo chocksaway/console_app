@@ -165,19 +165,80 @@ $ sudo apt-get install gradle
 
 A console.json file has been created which contains the "console output" (from running with gradle test).
 
-
-
-    
-    
-
-    
-    
-
-
-
- 
-
-
-
-
-
+	{
+	  "results": [
+	    {
+	      "title": "Sainsbury's Avocado Ripe & Ready XL Loose 300g",
+	      "size": "41kb",
+	      "unit_price": 1.50,
+	      "description": "Extra Large Avocado"
+	    },
+	    {
+	      "title": "Sainsbury's Avocado, Ripe & Ready x2",
+	      "size": "43kb",
+	      "unit_price": 1.80,
+	      "description": "Avocados"
+	    },
+	    {
+	      "title": "Sainsbury's Avocados, Ripe & Ready x4",
+	      "size": "43kb",
+	      "unit_price": 3.20,
+	      "description": "Avocados"
+	    },
+	    {
+	      "title": "Sainsbury's Conference Pears, Ripe & Ready x4 (minimum)",
+	      "size": "43kb",
+	      "unit_price": 2.00,
+	      "description": "Conference"
+	    },
+	    {
+	      "title": "Sainsbury's Kiwi Fruit, Ripe & Ready x4",
+	      "size": "43kb",
+	      "unit_price": 1.80,
+	      "description": "Kiwi"
+	    },
+	    {
+	      "title": "Sainsbury's Mango, Ripe & Ready x2",
+	      "size": "43kb",
+	      "unit_price": 2.00,
+	      "description": "by Sainsbury's Ripe and Ready Mango"
+	    },
+	    {
+	      "title": "Sainsbury's Nectarines, Ripe & Ready x4",
+	      "size": "42kb",
+	      "unit_price": 2.00,
+	      "description": "Class 1 Film - Plastic - not currently recycled Tray - Paper - widely recycled"
+	    },
+	    {
+	      "title": "Sainsbury's Peaches Ripe & Ready x4",
+	      "size": "43kb",
+	      "unit_price": 2.00,
+	      "description": "by Sainsbury's Ripe and Ready Peach"
+	    },
+	    {
+	      "title": "Sainsbury's Pears, Ripe & Ready x4 (minimum)",
+	      "size": "43kb",
+	      "unit_price": 2.00,
+	      "description": "Pear"
+	    },
+	    {
+	      "title": "Sainsbury's Plums Ripe & Ready x5",
+	      "size": "43kb",
+	      "unit_price": 2.50,
+	      "description": "Plums"
+	    },
+	    {
+	      "title": "Sainsbury's Ripe & Ready Golden Plums x6",
+	      "size": "43kb",
+	      "unit_price": 2.50,
+	      "description": "Plums"
+	    },
+	    {
+	      "title": "Sainsbury's White Flesh Nectarines, Ripe & Ready x4",
+	      "size": "43kb",
+	      "unit_price": 2.00,
+	      "description": "by Sainsbury's Ripe and Ready White Flesh Nectarines"
+	    }
+	  ],
+	  "total": 25.30
+	}
