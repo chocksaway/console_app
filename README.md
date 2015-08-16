@@ -20,7 +20,7 @@ This stock list is printed in JSON (using the Google GSon API), using the layout
 
 Ensure that git and gradle binaries are installed.
 
-It is important to install a recent version of gradle version.  Ubuntu by default is quite old.
+It is important to install a recent version of gradle.  Ubuntu by default is quite old.
 The following will install a recent version on Ubuntu:
 
 ```
@@ -36,7 +36,7 @@ $ sudo apt-get install gradle
 
     git clone https://github.com/chocksaway/console_app.git
     
-Build the application:
+### Build the application:
 
     gradle build
 
@@ -44,6 +44,19 @@ Build the application:
 ### To run the unit-tests (which displays the JSon output)
 
     gradle test
+    
+    
+### To run repeatedly
+
+    gradle clean
+    
+Gradle does not always out 
+
+
+
+    
+    
+
     
     
 

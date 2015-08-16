@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.rmi.CORBA.Util;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,6 +158,7 @@ public class HTMLPageWrapperTest {
         }
 
         String json = Utils.toJson(items, total);
+        Utils.writeToFile(json);
 
         System.out.print("---------- Welcome to the JSon Console:--------");
         System.out.println(json);

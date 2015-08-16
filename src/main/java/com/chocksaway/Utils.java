@@ -6,6 +6,9 @@ import org.jsoup.Jsoup;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -35,7 +38,7 @@ public class Utils {
      * @return - currency two decimal places
      */
     protected static BigDecimal parseCurrency(String curr) {
-        String val = curr.replace("£","");
+        String val = curr.replace("£", "");
         return new BigDecimal(val);
     }
 
@@ -53,6 +56,24 @@ public class Utils {
         String json = gson.toJson(obj);
 
         return json;
+    }
+
+
+    /**
+     * Write console JSon to file
+     * @param json - output
+     */
+    protected static void writeToFile(String json) {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter("console.json", "UTF-8");
+            writer.println(json);
+            writer.close();
+        } catch (FileNotFoundException e) {
+            logger.error(e.getMessage());
+        } catch (UnsupportedEncodingException e) {
+            logger.error(e.getMessage());
+        }
     }
 }
 
