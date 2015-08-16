@@ -163,7 +163,7 @@ $ sudo apt-get install gradle
     
 ### To review (view) the JSon
 
-A console.json file has been created which contains the "console output" (from running with gradle test).
+A **console.json** file has been created which contains the "console output" (from running with gradle test).  Open this file to view the JSon:
 
 	{
 	  "results": [
