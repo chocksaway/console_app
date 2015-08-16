@@ -20,7 +20,19 @@ This stock list is printed in JSON (using the Google GSon API), using the layout
 
 Ensure that git and gradle binaries are installed.
 
-Clone the git repository:
+It is important to install a recent version of gradle version.  Ubuntu by default is quite old.
+The following will install a recent version on Ubuntu:
+
+```
+$ sudo add-apt-repository ppa:cwchien/gradle
+
+$ sudo apt-get update
+
+$ sudo apt-get install gradle
+
+```
+
+### Clone the git repository:
 
     git clone https://github.com/chocksaway/console_app.git
     
